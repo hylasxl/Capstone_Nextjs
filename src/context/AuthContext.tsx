@@ -33,13 +33,12 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
             setUser(parsedUser);
             setIsAuthenticated(true);
             refreshAccessToken();
-            WebSocketService.connect(parsedUser.id); // 🔹 Connect WebSocket
+            WebSocketService.connect(parsedUser.id);
         }
     }, []);
 
     const refreshAccessToken = async () => {
         try {
-            // Example: Refresh token logic
         } catch (error) {
             console.error("Token refresh failed:", error);
             logout();
@@ -74,7 +73,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
         setAccessToken(null);
         delete axiosInstance.defaults.headers.Authorization;
 
-        WebSocketService.disconnect(); // 🔹 Disconnect WebSocket
+        WebSocketService.disconnect();
     };
 
     return (

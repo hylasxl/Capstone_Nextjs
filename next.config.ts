@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
         pathname: "/render/**",
       },
     ],
+
+    domains: ["res.cloudinary.com"],
+
   },
 };
 

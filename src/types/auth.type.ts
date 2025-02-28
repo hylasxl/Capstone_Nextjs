@@ -5,9 +5,9 @@ export interface LoginRequest {
 
 export interface LoginWithGoogleRequest {
     email: string,
-    displayName: string,
-    photoURL: string,
-    authCode: string,
+    display_name: string,
+    photoU_url: string,
+    auth_code: string,
 }
 
 export interface JWTClaims {

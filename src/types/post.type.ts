@@ -298,3 +298,124 @@ export const transformGetReportedPostResponse = (
         PageSize: apiResponse.page_size,
     };
 };
+
+export interface CreatePostRequest {
+    content: string,
+    privacy_status: string,
+    is_published_later: string,
+    published_later_timestamp: string,
+    account_id: string,
+    tag_account_ids: string
+    images: File[]
+}
+
+export interface CreatePostResponse {
+    post_id: string,
+    media_urls: string[]
+}
+
+export interface GetNewFeedRequest {
+    account_id: number,
+    seen_post_id: number[],
+    page: number,
+    page_size: number
+}
+
+export interface GetNewFeedResponse {
+    account_id: number,
+    page: number,
+    page_size: number,
+    posts: DisplayPost[]
+}
+
+export interface DisplayPost {
+    post_id: number;
+    content: string;
+    is_shared: boolean;
+    share_post_id: number;
+    share_post_data: SharePostDataDisplay;
+    is_hidden: boolean;
+    is_content_edited: boolean;
+    privacy_status: string;
+    interaction_type: string;
+    medias: PostShareMediaDisplay[];
+    created_at: number;
+    is_published_later: boolean;
+    published_later_timestamp: number;
+    is_published: boolean;
+    reactions: PostReactionDisplay;
+    comment_quantity: PostCommentDisplay;
+    shares: PostShareDisplay;
+    error: string;
+    account: SingleAccountInfo;
+}
+
+export interface SharePostDataDisplay {
+    post_id: number;
+    content: string;
+    is_content_edited: boolean;
+    privacy_status: string;
+    created_at: number;
+    is_published: boolean;
+    medias: PostShareMediaDisplay[];
+    account: SingleAccountInfo;
+}
+
+export interface PostShareMediaDisplay {
+    url: string;
+    content: string;
+    media_id: number;
+}
+
+export interface PostReactionDisplay {
+    total_quantity: number;
+    reactions: PostReactionData[];
+}
+
+export interface PostReactionData {
+    reaction_type: string;
+    account: SingleAccountInfo;
+}
+
+export interface PostCommentDisplay {
+    total_quantity: number;
+}
+
+export interface PostShareDisplay {
+    total_quantity: number;
+    shares: PostShareData[];
+}
+
+export interface PostShareData {
+    account: SingleAccountInfo;
+    created_at: number;
+}
+
+export interface SingleAccountInfo {
+    account_id: number;
+    avatar_url: string;
+    display_name: string;
+}
+
+export interface GetPostCommentReq {
+    post_id: number,
+    page: number,
+    page_size: number
+}
+
+export interface GetPostCommentRes {
+    post_id: number,
+    error: string,
+    success: boolean,
+    total_comment_number: number
+    comments: Comment[]
+}
+
+export interface Comment {
+    CommentID: number,
+    AccountID: number,
+    Content: string,
+    ReplyFromID: number | null,
+    Level: number,
+    Replies: Comment[] | null
+}

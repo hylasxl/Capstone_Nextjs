@@ -1,5 +1,9 @@
 import axiosInstance from "@/lib/axios";
 import {
+    CheckDuplicateRequest,
+    CheckDuplicateResponse,
+    GetAccountInfoRequest,
+    GetAccountInfoResponse,
     GetAccountListRequest,
     GetAccountListResponse,
     GetNewRegisterationDataRequest,
@@ -12,6 +16,8 @@ import {
     parseGetNewRegisterationDataResponse,
     parseGetUserTypeRequest,
     parseGetUserTypeResponse,
+    RegisterRequest,
+    RegisterResponse,
     ResolveBanUserRequest,
     ResolveBanUserResponse,
     SearchAccountListRequest,
@@ -101,6 +107,34 @@ export const UserService = {
             throw error;
         }
     },
+
+    checkDuplicateData: async (request: CheckDuplicateRequest): Promise<CheckDuplicateResponse> => {
+        try {
+            const response = await axiosInstance.post("/api/v1/users/check-duplicate", request);
+            return response.data
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+    register: async (request: RegisterRequest): Promise<RegisterResponse> => {
+        try {
+            const response = await axiosInstance.post("/api/v1/authentication/register", request);
+            return response.data
+        } catch (e) {
+            throw (e);
+        }
+    },
+    getUserData: async (request: GetAccountInfoRequest): Promise<GetAccountInfoResponse> => {
+        try {
+            const response = await axiosInstance.post("/api/v1/users/get-infos", request);
+            return response.data
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+
 
 
 };

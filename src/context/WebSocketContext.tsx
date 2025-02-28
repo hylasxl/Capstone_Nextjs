@@ -23,12 +23,12 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         ws.onerror = (error) => console.error("❌ WebSocket Error:", error);
         ws.onclose = () => console.log("⚠️ WebSocket Disconnected");
 
-        return () => ws.close(); // Cleanup on unmount
+        return () => ws.close();
     }, [ws]);
 
     const connectWebSocket = (userId: number) => {
         if (ws) ws.close();
-        const socket = new WebSocket(`ws://localhost:8080/ws?user_id=${userId}`);
+        const socket = new WebSocket(`ws://192.168.20.129:8080/ws?user_id=${userId}`);
 
         socket.onopen = () => console.log("✅ WebSocket Connected");
         setWs(socket);

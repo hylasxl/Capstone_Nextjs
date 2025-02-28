@@ -1,7 +1,7 @@
 import axios from "axios";
 import { authService } from "@/services/authService";
 
-const API_BASE_URL = "http://localhost:8080"; // Replace with your actual API URL
+const API_BASE_URL = "http://192.168.20.129:8080"; // Replace with your actual API URL
 
 const axiosInstance = axios.create({
     baseURL: API_BASE_URL,
@@ -29,8 +29,8 @@ axiosInstance.interceptors.response.use(
     async (error) => {
         if (error.response?.status === 401) {
             try {
-                const newAccessToken = await authService.refreshAccessToken();
-                accessToken = newAccessToken;
+                // const newAccessToken = await authService.refreshAccessToken();
+                accessToken = "a";
 
                 // Retry original request with new token
                 error.config.headers.Authorization = `Bearer ${accessToken}`;

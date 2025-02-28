@@ -26,7 +26,7 @@ export default function DashboardMetric() {
 
     const openGrafanaDashboard = () => {
         window.open(
-            "http://localhost:3002/d/cecucjreoujuoe/default-dashboard?orgId=1&from=now-15m&to=now&timezone=browser&viewPanel=panel-1",
+            "http://192.168.20.129:3002/d/cecucjreoujuoe/default-dashboard?orgId=1&from=now-15m&to=now&timezone=browser&viewPanel=panel-1",
             "_blank"
         );
     };

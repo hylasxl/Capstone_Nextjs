@@ -376,3 +376,72 @@ export const transformGetReportedAccountListResponse = (
         PageSize: apiResponse.page_size,
     };
 };
+
+export interface CheckDuplicateRequest {
+    data: string,
+    data_type: string
+}
+
+export interface CheckDuplicateResponse {
+    is_duplicate: boolean
+}
+export interface RegisterRequest {
+    username: string
+    password: string
+    first_name: string
+    last_name: string
+    birth_date: string
+    gender: string
+    email: string
+    phone: string
+    image: string
+}
+
+export interface RegisterResponse {
+    user_id: string
+    success: boolean
+}
+export interface GetAccountInfoRequest {
+    account_id: number;
+}
+
+export interface GetAccountInfoResponse {
+    account_id: string;
+    account: Account;
+    account_info: AccountInfo;
+    account_avatar: AccountAvatar;
+}
+
+export interface Account {
+    username: string;
+    role_id: string;
+    create_method: string;
+    is_banned: boolean;
+    is_restricted: boolean;
+    is_self_deleted: boolean;
+}
+
+export interface AccountInfo {
+    first_name: string;
+    last_name: string;
+    date_of_birth: number;
+    gender: string;
+    material_status: string;
+    phone_number: string;
+    email: string;
+    name_display_type: string;
+    bio: string;
+}
+
+export interface AccountAvatar {
+    avatar_id: string;
+    avatar_url: string;
+    is_in_use: boolean;
+    is_deleted: boolean;
+}
+
+export interface DisplayAccount {
+    AccountID: number,
+    DisplayName: string,
+    AvatarURL: string
+}

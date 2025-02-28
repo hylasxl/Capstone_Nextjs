@@ -18,17 +18,17 @@ class WebSocketService {
         if (this.isConnected || this.socket) return;
 
         this.userId = userId;
-        this.socket = new WebSocket(`ws://localhost:8080/ws?user_id=${userId}`);
+        this.socket = new WebSocket(`ws://192.168.20.129:8080/ws?user_id=${userId}`);
 
         this.socket.onopen = () => {
-            console.log("✅ WebSocket Connected");
+            // console.log("✅ WebSocket Connected");
             this.isConnected = true;
             this.send({ action: "get_active_users" }); // Request initial data
         };
 
         this.socket.onmessage = (event) => {
             const message = JSON.parse(event.data);
-            console.log("📩 WebSocket Message:", message);
+            // console.log("📩 WebSocket Message:", message);
             this.eventListeners.forEach((callback) => callback(message));
         };
 
